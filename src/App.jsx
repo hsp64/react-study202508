@@ -17,13 +17,27 @@ import ExpenseItem from "./components/expenses/ExpenseItem.jsx"; // 확장자 �
 const App = () => {
 
     // const $h1 = React.createElement('h1', null, '잘가 리액트!!');
-    const $h1 = <h1 class={'title'}>메롱 리액트~~!!</h1>;
+    const $h1 = <h1 className={'title'}>메롱 리액트~~!!</h1>;
 
     const text = 'Vanilla Javascript';
 
     return(
         <>
-            <ExpenseItem />
+            <ExpenseItem
+                title='닭강정'
+                price={8000}
+                date={new Date(2025, 7, 13)}
+            />
+            <ExpenseItem
+                title={'아이스크림'}
+                price={5000}
+                date={new Date(2025, 8, 12)}
+            />
+            <ExpenseItem
+                title='이펙티브 자바'
+                price={30000}
+                date={new Date(2025, 6, 5)}
+            />
             <Hello />
             <Bye />
             <Hello />
