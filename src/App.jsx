@@ -1,6 +1,7 @@
 import React from 'react';
 import Hello from "./components/Hello.jsx";
-import Bye from "./components/Bye"; // 확장자 생략가능
+import Bye from "./components/Bye";
+import ExpenseItem from "./components/expenses/ExpenseItem.jsx"; // 확장자 생략가능
 
 /*
     jsx : 리액트에서 사용하는 특수한 js문법, 태그를 그대로 쓰면 알아서 변환
@@ -13,7 +14,7 @@ import Bye from "./components/Bye"; // 확장자 생략가능
     5. 변수값이나 함수를 출력할 때는 {}로 감싸면 됨.
   */
 
-function App() {
+const App = () => {
 
     // const $h1 = React.createElement('h1', null, '잘가 리액트!!');
     const $h1 = <h1 class={'title'}>메롱 리액트~~!!</h1>;
@@ -22,6 +23,7 @@ function App() {
 
     return(
         <>
+            <ExpenseItem />
             <Hello />
             <Bye />
             <Hello />
@@ -36,6 +38,6 @@ function App() {
             </main>
         </>
     );
-}
+};
 
 export default App
