@@ -1,4 +1,6 @@
 import React from 'react';
+import Hello from "./components/Hello.jsx";
+import Bye from "./components/Bye"; // 확장자 생략가능
 
 /*
     jsx : 리액트에서 사용하는 특수한 js문법, 태그를 그대로 쓰면 알아서 변환
@@ -20,6 +22,9 @@ function App() {
 
     return(
         <>
+            <Hello />
+            <Bye />
+            <Hello />
             <header>
                 {$h1}
                 <h2>{text}</h2>
