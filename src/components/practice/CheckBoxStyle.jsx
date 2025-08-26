@@ -3,16 +3,14 @@ import './CheckBoxStyle.css';
 
 const CheckBoxStyle = () => {
 
+    const [isChecked, setIsChecked] = useState(false);
     /*
       1. input[checkbox]에 change이벤트가 걸려서
       2. check상태가 바뀔 때마다 상태변수를 논리값으로 업데이트하여
       3. label의 클래스를 유동적으로 변경해야함.
     */
-
-    const [isChecked, setIsChecked] = useState(false);
-
-    const handleCheckboxChange = (event) => {
-        setIsChecked(event.target.checked);
+    const changeHandler = e => {
+        setIsChecked(!isChecked);
     };
 
     return (
@@ -20,15 +18,9 @@ const CheckBoxStyle = () => {
             <input
                 type='checkbox'
                 id='styled-checkbox'
-                checked={isChecked}
-                onChange={handleCheckboxChange}
+                onChange={changeHandler}
             />
-            <label
-                className={isChecked ? 'checked' : 'unchecked'}
-                htmlFor='styled-checkbox'
-            >
-                Check me!
-            </label>
+            <label className={isChecked ? 'checked' : 'unchecked'} htmlFor='styled-checkbox'>Check me!</label>
         </div>
     );
 };
