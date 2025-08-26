@@ -1,36 +1,31 @@
-import React from 'react';
-import ExpenseList from './components/expenses/ExpenseList.jsx';
-import Card from "./components/ui/Card.jsx";
-import Counter from "./components/Counter.jsx";
-import NewExpense from "./components/new-expense/NewExpense.jsx";
-import CheckBoxStyle from "./components/practice/CheckBoxStyle.jsx";
+import React, {useState} from 'react';
+import CourseList from './components/CourseGoals/CourseList.jsx';
+import CourseInput from './components/CourseGoals/CourseInput.jsx';
+import './App.css';
 
 const App = () => {
-    const expenseList = [
+
+    // 목표데이터들의 묶음배열
+    const [goals, setGoals] = useState([
         {
-            title: '닭강정',
-            price: 8000,
-            date: new Date(2025, 7, 13)
+            id: 'g1',
+            text: '테스트 데이터1',
         },
         {
-            title: '호두정과',
-            price: 50000,
-            date: new Date(2025, 8, 21)
+            id: 'g2',
+            text: '테스트 데이터2',
         },
-        {
-            title: '리팩토링',
-            price: 33000,
-            date: new Date(2025, 4, 2)
-        },
-    ];
+    ]);
 
     return (
-        <>
-            <CheckBoxStyle />
-            <NewExpense />
-            <ExpenseList expenses={expenseList} />
-
-        </>
+        <div>
+            <section id='goal-form'>
+                <CourseInput />
+            </section>
+            <section id='goals'>
+                <CourseList />
+            </section>
+        </div>
     );
 };
 
