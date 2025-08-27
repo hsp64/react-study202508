@@ -3,21 +3,18 @@ import { MdDelete, MdDone } from 'react-icons/md';
 
 import styles from './scss/TodoItem.module.scss';
 
-const TodoItem = () => {
+const TodoItem = ({ todo, onDelete }) => { // props 받기
+    const { text, remove, 'todo-list-item': itemStyle, 'check-circle': checkCircle, active, finish} = styles;
 
-    const {
-        text,
-        remove,
-        'todo-list-item': itemStyle,
-        'check-circle': checkCircle,
-        active,
-        finish
-    } = styles;
+    const [isActive, setIsActive] = useState(todo?.completed || false); // 초기값을 props에서 가져오기
 
-    const [isActive, setIsActive] = useState(false);
-
-    const changeHandler = e => {
+    const changeHandler = () => {
         setIsActive(!isActive);
+    };
+
+
+    const deleteHandler = () => {
+        onDelete(todo.id);
     };
 
     return (
@@ -25,12 +22,13 @@ const TodoItem = () => {
             <div className={`${checkCircle} ${isActive ? active : ''}`} onClick={changeHandler}>
                 {isActive && <MdDone />}
             </div>
-            <span className={`${text} ${isActive ? finish : ''}`}>할 일 어쩌구~~</span>
-            <div className={remove}>
+            <span className={`${text} ${isActive ? finish : ''}`}>
+                {todo?.text || '할 일 어쩌구~~'} {/* props에서 텍스트 가져오기 */}
+            </span>
+            <div className={remove} onClick={deleteHandler}>
                 <MdDelete />
             </div>
         </li>
     );
 };
-
 export default TodoItem;
