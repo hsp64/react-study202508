@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react';
+import ResultModal from "./ResultModal.jsx";
 
 
 // 타이머 id를 저장
@@ -37,6 +38,7 @@ const TimerChallenge = ({ title, targetTime }) => {
         timerId.current = setTimeout(() => {
             console.log(targetTime + 's 타이머 만료!');
             setTimerExpired(true);
+            document.querySelector('dialog').showModal();
         }, targetTime * 1000);
 
         /*
@@ -57,6 +59,8 @@ const TimerChallenge = ({ title, targetTime }) => {
     };
 
     return (
+        <>
+        <ResultModal result='lost' targetTime={targetTime} />
         <section className='challenge'>
             <h2>{title}</h2>
             {timerExpired && <p>You Lost!</p>}
@@ -72,6 +76,7 @@ const TimerChallenge = ({ title, targetTime }) => {
                 {timerStarted ? 'Time is running...' : 'Timer inactive'}
             </p>
         </section>
+        </>
     );
 };
 
