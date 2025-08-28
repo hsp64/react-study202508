@@ -67,12 +67,17 @@ const TimerChallenge = ({title, targetTime}) => {
         dialogRef.current.showModal();
     };
 
+    // 모달을 닫으면 남은시간을 초기상태로리셋
+    const handleReset = () => setTimeRemaining(targetTime * 1000);
+
     return (
         <>
             <ResultModal
                 ref={dialogRef}
                 result={timeRemaining <= 0 ? 'lost' : 'won'}
                 targetTime={targetTime}
+                timeRemaining={timeRemaining}
+                onReset={handleReset}
             />
             <section className="challenge">
                 <h2>{title}</h2>
